@@ -163,7 +163,9 @@ class IMM_TG_Digest
 
     private static function link(IMM_TK_Event $event): string
     {
-        return '<a href="' . esc_url($event->url) . '">' . self::esc($event->title) . '</a>';
+        // Soft hyphens in titles help on the website, but are noise in a chat message.
+        $title = str_replace("\u{00AD}", '', $event->title);
+        return '<a href="' . esc_url($event->url) . '">' . self::esc($title) . '</a>';
     }
 
     /** Escapes text for Telegram's HTML mode (only &, < and > are special). */

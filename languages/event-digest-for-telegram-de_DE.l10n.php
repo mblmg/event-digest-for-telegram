@@ -62,7 +62,7 @@ return [
 		'Post this preview to the chat now' => 'Diese Vorschau jetzt in den Chat posten',
 		'Goes to the chat and topic above. Does not change the weekly schedule.' => 'Geht an den Chat und das Thema oben. Der wöchentliche Zeitplan bleibt unverändert.',
 		'Full programme and calendar subscription: %s' => 'Das ganze Programm und das Kalender-Abo: %s',
-		'D, F j' => 'D., j. F',
+		'D, F j' => 'D, j. F',
 		'all day' => 'ganztägig',
 		'doors %1$s, start %2$s' => 'Einlass %1$s Uhr, Beginn %2$s Uhr',
 		'at %s' => '%s Uhr',

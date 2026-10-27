@@ -239,7 +239,7 @@ msgstr "Das ganze Programm und das Kalender-Abo: %s"
 #. translators: date format for the event date in the message, see https://www.php.net/manual/datetime.format.php
 #: includes/class-digest.php:130
 msgid "D, F j"
-msgstr "D., j. F"
+msgstr "D, j. F"
 
 #: includes/class-digest.php:137
 msgid "all day"

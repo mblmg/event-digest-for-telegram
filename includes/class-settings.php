@@ -51,7 +51,9 @@ class IMM_TG_Settings
         if ($token === '') {
             $token = $old['token'];
         } elseif (!preg_match('/^\d+:[A-Za-z0-9_-]{20,}$/', $token)) {
-            add_settings_error(self::OPTION, 'token', __('The bot token does not look valid. It was not saved.', 'event-digest-for-telegram'));
+            if (function_exists('add_settings_error')) {
+                add_settings_error(self::OPTION, 'token', __('The bot token does not look valid. It was not saved.', 'event-digest-for-telegram'));
+            }
             $token = $old['token'];
         }
         if (!empty($input['delete_token'])) {
