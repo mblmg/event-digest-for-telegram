@@ -326,11 +326,18 @@ class IMM_TG_Admin
         $image    = ($event && $position !== 'none') ? get_the_post_thumbnail_url($event->id, 'medium_large') : '';
         $figure   = $image ? '<img src="' . esc_url($image) . '" alt="" style="display:block;width:100%;height:auto;border-radius:6px;margin:8px 0">' : '';
 
-        echo '<div style="max-width:480px;background:#fff;border:1px solid #c3c4c7;border-radius:8px;padding:12px 16px;line-height:1.5">'
+        $html = '<div style="max-width:480px;background:#fff;border:1px solid #c3c4c7;border-radius:8px;padding:12px 16px;line-height:1.5">'
             . ($position === 'above' ? $figure : '')
-            . wp_kses(nl2br($message), ['a' => ['href' => []], 'b' => [], 'br' => []])
+            . nl2br($message)
             . ($position === 'below' ? $figure : '')
             . '</div>';
+        echo wp_kses($html, [
+            'div' => ['style' => []],
+            'img' => ['src' => [], 'alt' => [], 'style' => []],
+            'a'   => ['href' => []],
+            'b'   => [],
+            'br'  => [],
+        ]);
 
         if (!IMM_TG_Settings::is_ready()) {
             return;
