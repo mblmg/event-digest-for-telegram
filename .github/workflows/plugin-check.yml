@@ -1,8 +1,12 @@
 name: Plugin Check
 
 # Runs the official WordPress.org Plugin Check on every push and pull request.
-# The updater check is skipped: this plugin updates itself from GitHub releases
-# on purpose, because it is not distributed through WordPress.org.
+#
+# - The updater check is skipped: this plugin updates itself from GitHub releases
+#   on purpose, because it is not distributed through WordPress.org.
+# - Plugin Check installs required plugins from WordPress.org. "Add to Calendar from
+#   Custom Fields" is not there yet, so the "Requires Plugins" line is removed from
+#   the copy that gets checked. The released plugin keeps it.
 
 on:
   push:
@@ -19,17 +23,7 @@ jobs:
         run: |
           mkdir -p build/event-digest-for-telegram
           rsync -a --exclude-from=.distignore --exclude=build ./ build/event-digest-for-telegram/
-
-      # The required plugin "Add to Calendar from Custom Fields" is not on WordPress.org yet,
-      # so Plugin Check could not install it. Provide it from GitHub instead.
-      - uses: actions/checkout@v5
-        with:
-          repository: mblmg/add-to-calendar-from-custom-fields
-          path: deps/add-to-calendar-from-custom-fields
-
-      - name: Map the required plugin into the test site
-        run: |
-          echo '{ "mappings": { "wp-content/plugins/add-to-calendar-from-custom-fields": "./deps/add-to-calendar-from-custom-fields" } }' > .wp-env.json
+          sed -i '/^ \* Requires Plugins:/d' build/event-digest-for-telegram/event-digest-for-telegram.php
 
       - name: Run Plugin Check
         uses: wordpress/plugin-check-action@v1
