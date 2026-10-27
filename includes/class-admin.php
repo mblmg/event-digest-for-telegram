@@ -78,11 +78,10 @@ class IMM_TG_Admin
         }
         check_admin_referer('imm_tg_send_test');
 
-        $message = IMM_TG_Digest::message();
-        if ($message === '') {
+        $result = IMM_TG_Digest::post();
+        if ($result === null) {
             $status = 'empty';
         } else {
-            $result = IMM_TG_Telegram::send($message);
             if (is_wp_error($result)) {
                 set_transient('imm_tg_error_' . get_current_user_id(), $result->get_error_message(), 5 * MINUTE_IN_SECONDS);
                 $status = 'error';
@@ -182,6 +181,17 @@ class IMM_TG_Admin
 
                 <h2><?php esc_html_e('Message', 'event-digest-for-telegram'); ?></h2>
                 <table class="form-table" role="presentation">
+                    <tr>
+                        <th scope="row"><label for="imm-tg-preview-pos"><?php esc_html_e('Link preview', 'event-digest-for-telegram'); ?></label></th>
+                        <td>
+                            <select id="imm-tg-preview-pos" name="<?php echo $field('link_preview'); // phpcs:ignore WordPress.Security.EscapeOutput ?>">
+                                <option value="above" <?php selected($s['link_preview'], 'above'); ?>><?php esc_html_e('Above the text', 'event-digest-for-telegram'); ?></option>
+                                <option value="below" <?php selected($s['link_preview'], 'below'); ?>><?php esc_html_e('Below the text', 'event-digest-for-telegram'); ?></option>
+                                <option value="none" <?php selected($s['link_preview'], 'none'); ?>><?php esc_html_e('No preview', 'event-digest-for-telegram'); ?></option>
+                            </select>
+                            <p class="description"><?php esc_html_e('Shows the preview of the next event page with its image, as when you post a link yourself. Image, title and description come from the page (e.g. set by your SEO plugin).', 'event-digest-for-telegram'); ?></p>
+                        </td>
+                    </tr>
                     <tr>
                         <th scope="row"><label for="imm-tg-intro"><?php esc_html_e('Intro (optional)', 'event-digest-for-telegram'); ?></label></th>
                         <td><textarea class="large-text" rows="3" id="imm-tg-intro" name="<?php echo $field('intro'); // phpcs:ignore WordPress.Security.EscapeOutput ?>"><?php echo esc_textarea($s['intro']); ?></textarea></td>
@@ -302,14 +312,24 @@ class IMM_TG_Admin
         if (!class_exists('IMM_TK_Event')) {
             return;
         }
-        $message = IMM_TG_Digest::message();
+        $selection = IMM_TG_Digest::select();
+        $message   = IMM_TG_Digest::message($selection);
         if ($message === '') {
             echo '<p>' . esc_html__('Right now there would be nothing to post: no events in the coming days and nothing new.', 'event-digest-for-telegram') . '</p>';
             return;
         }
         echo '<p>' . esc_html__('This is what the digest would look like if it were posted now:', 'event-digest-for-telegram') . '</p>';
+
+        // Approximation of Telegram's link preview: the featured image of the preview event.
+        $position = (string) IMM_TG_Settings::get('link_preview');
+        $event    = IMM_TG_Digest::preview_event($selection);
+        $image    = ($event && $position !== 'none') ? get_the_post_thumbnail_url($event->id, 'medium_large') : '';
+        $figure   = $image ? '<img src="' . esc_url($image) . '" alt="" style="display:block;width:100%;height:auto;border-radius:6px;margin:8px 0">' : '';
+
         echo '<div style="max-width:480px;background:#fff;border:1px solid #c3c4c7;border-radius:8px;padding:12px 16px;line-height:1.5">'
+            . ($position === 'above' ? $figure : '')
             . wp_kses(nl2br($message), ['a' => ['href' => []], 'b' => [], 'br' => []])
+            . ($position === 'below' ? $figure : '')
             . '</div>';
 
         if (!IMM_TG_Settings::is_ready()) {

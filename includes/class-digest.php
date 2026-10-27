@@ -59,6 +59,28 @@ class IMM_TG_Digest
         return apply_filters('imm_tg_digest_events', ['week' => $week, 'new' => $new]);
     }
 
+    /** The event whose page preview (with image) is shown: the next event, else the first new one. */
+    public static function preview_event(array $selection): ?IMM_TK_Event
+    {
+        return $selection['week'][0] ?? $selection['new'][0] ?? null;
+    }
+
+    /**
+     * Builds and posts the digest.
+     *
+     * @return array|WP_Error|null Telegram result, error, or null if there was nothing to post.
+     */
+    public static function post()
+    {
+        $selection = self::select();
+        $message   = self::message($selection);
+        if ($message === '') {
+            return null;
+        }
+        $event = self::preview_event($selection);
+        return IMM_TG_Telegram::send($message, $event ? $event->url : '');
+    }
+
     /** Builds the message in Telegram HTML. Empty string if there is nothing to post. */
     public static function message(?array $selection = null): string
     {

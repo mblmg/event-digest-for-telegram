@@ -21,6 +21,7 @@ class IMM_TG_Settings
             'time'        => '10:00',
             'days_ahead'  => 7,
             'include_new' => 1,
+            'link_preview' => 'above', // Preview with image for the next event: above, below or none.
             'intro'       => '',
             'heading_week' => '',     // Empty = translated default.
             'heading_new'  => '',
@@ -73,6 +74,7 @@ class IMM_TG_Settings
             'time'         => $time,
             'days_ahead'   => min(31, max(1, absint($input['days_ahead'] ?? 7))),
             'include_new'  => empty($input['include_new']) ? 0 : 1,
+            'link_preview' => in_array($input['link_preview'] ?? '', ['above', 'below', 'none'], true) ? $input['link_preview'] : 'above',
             'intro'        => sanitize_textarea_field($input['intro'] ?? ''),
             'heading_week' => sanitize_text_field($input['heading_week'] ?? ''),
             'heading_new'  => sanitize_text_field($input['heading_new'] ?? ''),

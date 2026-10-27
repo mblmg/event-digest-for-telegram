@@ -70,14 +70,13 @@ class IMM_TG_Scheduler
             return;
         }
 
-        $message = IMM_TG_Digest::message();
-        if ($message === '') {
+        $result = IMM_TG_Digest::post();
+        if ($result === null) {
             IMM_TG_Settings::update_state([
                 'last_run'    => $now,
                 'last_result' => __('Nothing posted: no events in the coming days and nothing new.', 'event-digest-for-telegram'),
             ]);
         } else {
-            $result = IMM_TG_Telegram::send($message);
             if (is_wp_error($result)) {
                 IMM_TG_Settings::update_state([
                     'last_run'    => $now,

@@ -27,6 +27,7 @@ Features:
 * Post to a group, a topic in a group with topics, or a channel
 * Choose weekday, time and how many days ahead
 * Optional intro text and your own headings
+* Link preview with image for the next event, like a link you post yourself
 * Preview on the settings page, and a button to post the preview right away
 * Built-in helper that finds the chat ID and topic ID for you
 

@@ -35,14 +35,29 @@ class IMM_TG_Telegram
         return $body['result'];
     }
 
-    /** @return array|WP_Error */
-    public static function send(string $html)
+    /**
+     * Posts a message. With $preview_url, Telegram shows the preview (image, title,
+     * description) of that page, like when a link is posted by hand.
+     *
+     * @return array|WP_Error
+     */
+    public static function send(string $html, string $preview_url = '')
     {
+        $position = (string) IMM_TG_Settings::get('link_preview');
+        if ($preview_url !== '' && $position !== 'none') {
+            $preview = [
+                'url'                => $preview_url,
+                'prefer_large_media' => true,
+                'show_above_text'    => $position === 'above',
+            ];
+        } else {
+            $preview = ['is_disabled' => true];
+        }
         $params = [
             'chat_id'              => IMM_TG_Settings::get('chat_id'),
             'text'                 => $html,
             'parse_mode'           => 'HTML',
-            'link_preview_options' => wp_json_encode(['is_disabled' => true]),
+            'link_preview_options' => wp_json_encode($preview),
         ];
         $thread = (string) IMM_TG_Settings::get('thread_id');
         if ($thread !== '') {
