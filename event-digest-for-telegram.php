@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Event Digest for Telegram
- * Plugin URI:        https://i-make.media/
+ * Plugin URI:        https://github.com/mblmg/event-digest-for-telegram
  * Description:       Posts a weekly preview of upcoming events to a Telegram group, topic or channel: the events of the coming days plus everything newly added to the programme. Uses the events configured in "Add to Calendar from Custom Fields".
  * Version:           1.0.0
  * Requires at least: 6.5
@@ -13,6 +13,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       event-digest-for-telegram
  * Domain Path:       /languages
+ * Update URI:        https://github.com/mblmg/event-digest-for-telegram
  */
 
 defined('ABSPATH') || exit;
@@ -26,6 +27,7 @@ require_once IMM_TG_DIR . 'includes/class-telegram.php';
 require_once IMM_TG_DIR . 'includes/class-digest.php';
 require_once IMM_TG_DIR . 'includes/class-scheduler.php';
 require_once IMM_TG_DIR . 'includes/class-admin.php';
+require_once IMM_TG_DIR . 'includes/class-updater.php';
 
 // Bundled translations (German).
 add_action('init', function () {
@@ -34,5 +36,6 @@ add_action('init', function () {
 
 IMM_TG_Scheduler::init();
 IMM_TG_Admin::init();
+IMM_TG_Updater::init();
 
 register_deactivation_hook(__FILE__, [IMM_TG_Scheduler::class, 'unschedule']);

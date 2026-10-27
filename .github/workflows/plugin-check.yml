@@ -1,0 +1,28 @@
+name: Plugin Check
+
+# Runs the official WordPress.org Plugin Check on every push and pull request.
+# The updater check is skipped: this plugin updates itself from GitHub releases
+# on purpose, because it is not distributed through WordPress.org.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  plugin-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build plugin folder
+        run: |
+          mkdir -p build/event-digest-for-telegram
+          rsync -a --exclude-from=.distignore --exclude=build ./ build/event-digest-for-telegram/
+
+      - name: Run Plugin Check
+        uses: wordpress/plugin-check-action@v1
+        with:
+          build-dir: build/event-digest-for-telegram
+          exclude-checks: |
+            plugin_updater

@@ -50,6 +50,10 @@ WordPress runs scheduled tasks when someone visits the site. On sites with few v
 
 The weekly digest is posted at most once every six days. The test button on the settings page does not count as the weekly digest.
 
+= How does the plugin get updates? =
+
+From the GitHub releases of https://github.com/mblmg/event-digest-for-telegram. New versions appear under Dashboard → Updates like any other plugin update, and automatic updates can be turned on in the plugin list.
+
 = Developer hooks =
 
 * Filter `imm_tg_digest_events` ($selection): change the selected events (`week` and `new`).
@@ -61,6 +65,8 @@ This plugin connects to the Telegram Bot API (api.telegram.org), provided by Tel
 
 * When the weekly digest is due, or when an administrator clicks "Post this preview to the chat now", the plugin sends the message text (event titles, dates, times, venues and links to your site) together with the bot token and the chat ID to Telegram.
 * When an administrator clicks "Find chats", the plugin asks Telegram for the bot's recent updates (chats and topics the bot was added to or received commands in).
+
+Updates: the plugin asks the GitHub API (api.github.com) up to twice a day whether a new release exists and, when an administrator installs an update, downloads it from github.com. These requests contain no data about your site or its visitors beyond what any web request contains (such as your server's IP address). GitHub's terms: [Terms of Service](https://docs.github.com/site-policy/github-terms/github-terms-of-service), [Privacy Statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
 
 No data about visitors of your site is sent. Telegram's terms: [Terms of Service](https://telegram.org/tos), [Bot Developer Terms](https://telegram.org/tos/bot-developers), [Privacy Policy](https://telegram.org/privacy).
 
