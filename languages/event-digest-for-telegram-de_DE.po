@@ -1,0 +1,286 @@
+# German translation for Event Digest for Telegram.
+msgid ""
+msgstr ""
+"Project-Id-Version: Event Digest for Telegram 1.0.0\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: event-digest-for-telegram\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Description of the plugin
+#: event-digest-for-telegram.php
+msgid "Posts a weekly preview of upcoming events to a Telegram group, topic or channel: the events of the coming days plus everything newly added to the programme. Uses the events configured in \"Add to Calendar from Custom Fields\"."
+msgstr "Postet jede Woche eine Vorschau der anstehenden Termine in eine Telegram-Gruppe, ein Thema oder einen Kanal: die Termine der nächsten Tage und alles, was neu ins Programm gekommen ist. Nutzt die Termine aus „Add to Calendar from Custom Fields“."
+
+#: includes/class-admin.php:16 includes/class-admin.php:111
+msgid "Event Digest for Telegram"
+msgstr "Event Digest for Telegram"
+
+#: includes/class-admin.php:17
+msgid "Telegram Digest"
+msgstr "Telegram-Wochenvorschau"
+
+#: includes/class-admin.php:34
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: includes/class-admin.php:50
+msgid "Event Digest for Telegram needs the plugin \"Add to Calendar from Custom Fields\", which provides the events."
+msgstr "Event Digest for Telegram braucht das Plugin „Add to Calendar from Custom Fields“, das die Termine liefert."
+
+#: includes/class-admin.php:58 includes/class-admin.php:77
+msgid "Not allowed."
+msgstr "Nicht erlaubt."
+
+#: includes/class-admin.php:112
+msgid "Posts a weekly preview to Telegram: the events of the coming days and everything newly added to the programme. Nothing is posted in weeks without either."
+msgstr "Postet jede Woche eine Vorschau in Telegram: die Termine der nächsten Tage und alles, was neu ins Programm gekommen ist. In Wochen ohne beides wird nichts gepostet."
+
+#: includes/class-admin.php:120
+msgid "Bot and chat"
+msgstr "Bot und Chat"
+
+#: includes/class-admin.php:123
+msgid "Bot token"
+msgstr "Bot-Token"
+
+#: includes/class-admin.php:126
+msgid "Saved. Leave empty to keep it."
+msgstr "Gespeichert. Leer lassen, um ihn zu behalten."
+
+#: includes/class-admin.php:128
+msgid "Delete token"
+msgstr "Token löschen"
+
+#: includes/class-admin.php:130
+msgid "Create a bot with <code>@BotFather</code> in Telegram (command <code>/newbot</code>) and paste the token it gives you. Keep the token secret."
+msgstr "Lege in Telegram mit <code>@BotFather</code> einen Bot an (Befehl <code>/newbot</code>) und füge den Token ein, den du bekommst. Halte den Token geheim."
+
+#: includes/class-admin.php:134 includes/class-admin.php:288
+msgid "Chat ID"
+msgstr "Chat-ID"
+
+#: includes/class-admin.php:137
+msgid "ID of the group or channel, e.g. -1001234567890. Use \"Find chats\" below to look it up."
+msgstr "ID der Gruppe oder des Kanals, z. B. -1001234567890. Mit „Chats finden“ weiter unten kannst du sie nachschlagen."
+
+#: includes/class-admin.php:141
+msgid "Topic ID (optional)"
+msgstr "Themen-ID (optional)"
+
+#: includes/class-admin.php:144
+msgid "For groups with topics: the topic the digest goes to. Empty = the general chat."
+msgstr "Für Gruppen mit Themen: das Thema, in das die Vorschau gepostet wird. Leer = allgemeiner Chat."
+
+#: includes/class-admin.php:149
+msgid "Schedule"
+msgstr "Zeitplan"
+
+#: includes/class-admin.php:152
+msgid "Weekly digest"
+msgstr "Wochenvorschau"
+
+#: includes/class-admin.php:153
+msgid "Post automatically every week"
+msgstr "Jede Woche automatisch posten"
+
+#: includes/class-admin.php:156
+msgid "Day and time"
+msgstr "Tag und Uhrzeit"
+
+#: includes/class-admin.php:167
+msgid "In the time zone of the site. WordPress runs scheduled tasks when the site is visited, so on quiet sites the post can be a little late."
+msgstr "In der Zeitzone der Website. WordPress führt geplante Aufgaben aus, wenn jemand die Seite besucht. Auf ruhigen Seiten kann der Post deshalb etwas später kommen."
+
+#: includes/class-admin.php:171
+msgid "Days ahead"
+msgstr "Tage im Voraus"
+
+#: includes/class-admin.php:174
+msgid "Events starting within this many days are listed in the first part."
+msgstr "Termine, die innerhalb dieser Anzahl von Tagen beginnen, stehen im ersten Teil."
+
+#: includes/class-admin.php:178
+msgid "New events"
+msgstr "Neue Termine"
+
+#: includes/class-admin.php:179
+msgid "Also list events published since the last digest"
+msgstr "Auch Termine aufführen, die seit der letzten Vorschau veröffentlicht wurden"
+
+#: includes/class-admin.php:183
+msgid "Message"
+msgstr "Nachricht"
+
+#: includes/class-admin.php:186
+msgid "Intro (optional)"
+msgstr "Einleitung (optional)"
+
+#: includes/class-admin.php:190
+msgid "Heading for the coming days"
+msgstr "Überschrift für die nächsten Tage"
+
+#: includes/class-admin.php:191 includes/class-digest.php:77
+msgid "This week"
+msgstr "Diese Woche"
+
+#: includes/class-admin.php:194
+msgid "Heading for new events"
+msgstr "Überschrift für neue Termine"
+
+#: includes/class-admin.php:195 includes/class-digest.php:94
+msgid "New in the programme"
+msgstr "Neu im Programm"
+
+#: includes/class-admin.php:198
+msgid "Programme page"
+msgstr "Programmseite"
+
+#: includes/class-admin.php:201
+msgid "Linked at the end of every digest."
+msgstr "Wird am Ende jeder Vorschau verlinkt."
+
+#: includes/class-admin.php:206
+msgid "Save settings"
+msgstr "Einstellungen speichern"
+
+#: includes/class-admin.php:218
+msgid "The preview was posted to the chat."
+msgstr "Die Vorschau wurde in den Chat gepostet."
+
+#: includes/class-admin.php:219
+msgid "Nothing to post: no events in the coming days and nothing new."
+msgstr "Nichts zu posten: keine Termine in den nächsten Tagen und nichts Neues."
+
+#: includes/class-admin.php:237
+msgid "Next digest"
+msgstr "Nächste Vorschau"
+
+#: includes/class-admin.php:237
+msgid "not scheduled (turn on the weekly digest and enter token and chat ID)"
+msgstr "nicht geplant (Wochenvorschau einschalten und Token und Chat-ID eintragen)"
+
+#: includes/class-admin.php:238
+msgid "Last posted"
+msgstr "Zuletzt gepostet"
+
+#: includes/class-admin.php:241
+msgid "Last run"
+msgstr "Letzter Lauf"
+
+#: includes/class-admin.php:252 includes/class-admin.php:266
+msgid "Find chats"
+msgstr "Chats finden"
+
+#: includes/class-admin.php:254
+msgid "Add the bot to your group (or as administrator to your channel) and allow it to post messages."
+msgstr "Füge den Bot zu deiner Gruppe hinzu (oder als Administrator zu deinem Kanal) und erlaube ihm, Nachrichten zu senden."
+
+#: includes/class-admin.php:255
+msgid "In a group with topics: open the topic and send <code>/start@YourBotName</code> there. In a channel: post any message."
+msgstr "In einer Gruppe mit Themen: Öffne das Thema und schick dort <code>/start@DeinBotName</code>. In einem Kanal: Poste irgendeine Nachricht."
+
+#: includes/class-admin.php:256
+msgid "Click the button. The chats and topics the bot has seen in the last 24 hours appear below."
+msgstr "Klick auf den Button. Darunter erscheinen die Chats und Themen, die der Bot in den letzten 24 Stunden gesehen hat."
+
+#: includes/class-admin.php:260
+msgid "Save the bot token first."
+msgstr "Speichere zuerst den Bot-Token."
+
+#. translators: %s: bot username
+#: includes/class-admin.php:282
+msgid "Bot: @%s"
+msgstr "Bot: @%s"
+
+#: includes/class-admin.php:285
+msgid "The bot has not seen any chat yet. Follow the steps above and try again."
+msgstr "Der Bot hat noch keinen Chat gesehen. Folge den Schritten oben und versuch es noch einmal."
+
+#: includes/class-admin.php:288
+msgid "Chat"
+msgstr "Chat"
+
+#: includes/class-admin.php:288
+msgid "Type"
+msgstr "Typ"
+
+#: includes/class-admin.php:288
+msgid "Topics (ID: name)"
+msgstr "Themen (ID: Name)"
+
+#: includes/class-admin.php:301
+msgid "Preview"
+msgstr "Vorschau"
+
+#: includes/class-admin.php:307
+msgid "Right now there would be nothing to post: no events in the coming days and nothing new."
+msgstr "Im Moment gäbe es nichts zu posten: keine Termine in den nächsten Tagen und nichts Neues."
+
+#: includes/class-admin.php:310
+msgid "This is what the digest would look like if it were posted now:"
+msgstr "So sähe die Vorschau aus, wenn sie jetzt gepostet würde:"
+
+#: includes/class-admin.php:321
+msgid "Post this preview to the chat now"
+msgstr "Diese Vorschau jetzt in den Chat posten"
+
+#: includes/class-admin.php:322
+msgid "Goes to the chat and topic above. Does not change the weekly schedule."
+msgstr "Geht an den Chat und das Thema oben. Der wöchentliche Zeitplan bleibt unverändert."
+
+#. translators: %s: link to the programme page
+#: includes/class-digest.php:107
+msgid "Full programme and calendar subscription: %s"
+msgstr "Das ganze Programm und das Kalender-Abo: %s"
+
+#. translators: date format for the event date in the message, see https://www.php.net/manual/datetime.format.php
+#: includes/class-digest.php:130
+msgid "D, F j"
+msgstr "D., j. F"
+
+#: includes/class-digest.php:137
+msgid "all day"
+msgstr "ganztägig"
+
+#. translators: 1: doors time, 2: start time
+#: includes/class-digest.php:145
+msgid "doors %1$s, start %2$s"
+msgstr "Einlass %1$s Uhr, Beginn %2$s Uhr"
+
+#. translators: %s: start time
+#: includes/class-digest.php:151
+msgid "at %s"
+msgstr "%s Uhr"
+
+#: includes/class-scheduler.php:77
+msgid "Nothing posted: no events in the coming days and nothing new."
+msgstr "Nichts gepostet: keine Termine in den nächsten Tagen und nichts Neues."
+
+#. translators: %s: error message
+#: includes/class-scheduler.php:85
+msgid "Error: %s"
+msgstr "Fehler: %s"
+
+#: includes/class-scheduler.php:91
+msgid "Posted."
+msgstr "Gepostet."
+
+#: includes/class-settings.php:54
+msgid "The bot token does not look valid. It was not saved."
+msgstr "Der Bot-Token sieht nicht gültig aus und wurde nicht gespeichert."
+
+#: includes/class-telegram.php:19
+msgid "No bot token saved."
+msgstr "Kein Bot-Token gespeichert."
+
+#: includes/class-telegram.php:27
+msgid "Telegram could not be reached."
+msgstr "Telegram war nicht erreichbar."
+
+#. translators: %s: error message from Telegram
+#: includes/class-telegram.php:33
+msgid "Telegram reports: %s"
+msgstr "Telegram meldet: %s"
