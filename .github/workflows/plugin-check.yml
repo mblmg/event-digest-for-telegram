@@ -20,6 +20,17 @@ jobs:
           mkdir -p build/event-digest-for-telegram
           rsync -a --exclude-from=.distignore --exclude=build ./ build/event-digest-for-telegram/
 
+      # The required plugin "Add to Calendar from Custom Fields" is not on WordPress.org yet,
+      # so Plugin Check could not install it. Provide it from GitHub instead.
+      - uses: actions/checkout@v5
+        with:
+          repository: mblmg/add-to-calendar-from-custom-fields
+          path: deps/add-to-calendar-from-custom-fields
+
+      - name: Map the required plugin into the test site
+        run: |
+          echo '{ "mappings": { "wp-content/plugins/add-to-calendar-from-custom-fields": "./deps/add-to-calendar-from-custom-fields" } }' > .wp-env.json
+
       - name: Run Plugin Check
         uses: wordpress/plugin-check-action@v1
         with:
